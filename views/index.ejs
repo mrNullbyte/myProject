@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title><%=title%></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="/stylesheets/bootstrap.css" rel="stylesheet">
+
+	<link href="/stylesheets/ionicons.css" rel="stylesheet">
+
+
+	<link href="/stylesheets/style.css" rel="stylesheet">
+
+	<link href="/stylesheets/responsive.css" rel="stylesheet">
+
+</head>
+<style>
+	.imagehover:hover {
+		transform: scale(1.1);
+		transition-duration: .6s
+	}
+
+	.imgavatar {
+		width: 100%;
+		border-radius: 100%;
+		margin-top: 0px;
+		height: 56px;
+	}
+</style>
+
+<body>
+	<header style="overflow: visible;">
+		<div class="container-fluid position-relative no-side-padding">
+
+			<a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+				<li><a href="/">Home</a></li>
+				<li><a href="#">Categories</a></li>
+				<li><a href="#">Features</a></li>
+				<li><a href="#" class="btn dropdown-toggle" data-toggle="dropdown">Account</a>
+					<div class="dropdown-menu" style="top: 57px!important;left: 37.59%!important">
+						<a class="dropdown-item" href="/api/login">Login</a>
+						<a class="dropdown-item" href="/api/register">Register</a>
+					</div>
+				</li>
+			</ul><!-- main-menu -->
+
+			<div class="src-area">
+				<form>
+					<button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+					<input class="src-input" type="text" placeholder="Type of search">
+				</form>
+			</div>
+
+		</div><!-- conatiner -->
+	</header>
+
+	<div class="slider" style="display: flex;"></div><!-- slider -->
+	<section class="blog-area section">
+		<div class="container">
+
+			<div class="row">
+
+				<% for(var i=0; i < posts.length; i++) { %>
+
+				<div class="col-lg-4 col-md-6">
+					<div class="card h-100">
+						<div class="single-post post-style-1">
+
+							<div class="blog-image"><a href="/singel-post-member/<%=posts[i]._id%>"><img class="imagehover"
+										src="../uploads/articleImage/<%=posts[i].articleImage%>" alt="Blog Image"></a>
+							</div>
+
+							<a class="avatar" href="#" style="background-color: white;cursor: auto;">
+								<%if (posts[i].author_ID.avatar) {%>
+								<img class="imgavatar" src="../uploads/<%=posts[i].author_ID.avatar%>"
+									alt="Profile Image">
+								<%}else{%>
+								<img class="imgavatar" src="../uploads/download.png" alt="Profile Image">
+
+								<%}%>
+								</a>
+	
+								<div class="blog-info">
+	
+									<h4 class="title"><a href="/singel-post-member/<%=posts[i]._id%>"><b><%=posts[i].articleTitle%></b></a></h4>
+							<div class="card-text">
+								<h5 class=""><%=posts[i].articleContent.substring(0,20)%> ...</h5>
+							</div>
+							<br>
+							<ul class="post-footer">
+								<li style="width: 49.34%;"><a href="###"><i
+											class="ion-android-contact"></i><%=posts[i].author_ID.userName%></a></li>
+								<li style="width: 50.66%;"><a href="###"><i
+											class="ion-android-time"></i><%=(posts[i].created_at).toString().substring(0,15)%></a>
+								</li>
+								<!-- <li><a href="#"><i class="ion-eye"></i>138</a></li> -->
+							</ul>
+
+						</div><!-- blog-info -->
+					</div><!-- single-post -->
+				</div><!-- card -->
+			</div><!-- col-lg-4 col-md-6 -->
+
+			<% } %>
+
+
+
+		</div><!-- row -->
+
+		<a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
+
+		</div><!-- container -->
+	</section><!-- section -->
+
+
+	<footer>
+
+			<div class="container">
+				<div class="row">
+	
+					<div class="col-lg-4 col-md-6">
+						<div class="footer-section">
+	
+							<a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
+							<p class="copyright">behnam @ 2019. All rights reserved.</p>
+							<p class="copyright">Designed by <a href="###" target="_blank">Behnam</a></p>
+							<ul class="icons">
+								<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
+								<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
+								<li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+								<li><a href="#"><i class="ion-social-vimeo-outline"></i></a></li>
+								<li><a href="#"><i class="ion-social-pinterest-outline"></i></a></li>
+							</ul>
+	
+						</div><!-- footer-section -->
+					</div><!-- col-lg-4 col-md-6 -->
+	
+					<!-- <div class="col-lg-4 col-md-6">
+							<div class="footer-section">
+							<h4 class="title"><b>CATAGORIES</b></h4>
+							<ul>
+								<li><a href="#">BEAUTY</a></li>
+								<li><a href="#">HEALTH</a></li>
+								<li><a href="#">MUSIC</a></li>
+							</ul>
+							<ul>
+								<li><a href="#">SPORT</a></li>
+								<li><a href="#">DESIGN</a></li>
+								<li><a href="#">TRAVEL</a></li>
+							</ul>
+						</div><!-- footer-section -->
+					<!-- </div>col-lg-4 col-md-6 --> 
+					<div class="col-lg-4 col-md-6"></div>
+					<div class="col-lg-4 col-md-6">
+						<div class="footer-section">
+	
+							<h4 class="title"><b>SUBSCRIBE</b></h4>
+							<div class="input-area">
+								<form>
+									<input class="email-input" type="text" placeholder="Enter your email">
+									<button class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
+								</form>
+							</div>
+	
+						</div><!-- footer-section -->
+					</div><!-- col-lg-4 col-md-6 -->
+	
+				</div><!-- row -->
+			</div><!-- container -->
+		</footer>
+
+
+	<!-- SCIPTS -->
+
+	<script src="/javascripts/jquery-3.4.1.js"></script>
+
+	<script src="/javascripts/tether.min.js"></script>
+
+	<script src="/javascripts/bootstrap.js"></script>
+
+	<script src="/javascripts/scripts.js"></script>
+
+
+</body>
+
+</html>

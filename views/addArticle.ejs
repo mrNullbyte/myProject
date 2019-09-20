@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+</head> 
+
+<body style="overflow: scroll">
+    <% include ./partials/header %>
+    <nav style="background-color:rgb(192, 175, 175)">
+            <div class="nav-wrapper" style="    display: flex;justify-content: space-around;">
+              <ul id="nav-mobile" class="left hide-on-med-and-down" style="width: 100%; ">
+                <li style="padding-right: 26%;padding-left: 7%;"><a href="/api/panel" style="text-decoration-line: none;" id="Dashboard">Dashboard</a></li>
+                <li><a href="#newpost" style="text-decoration-line: none;" id="newpost">new post</a></li>
+                <li><a href="#showpost" style="text-decoration-line: none;" id="showpost">show post</a></li>
+                <li><a href="#showallpost" style="text-decoration-line: none;" id="showallpost">show all post</a></li>
+              </ul>
+            </div>
+        </nav>
+
+          <div class="container">
+
+                <div class="">
+                        <div class="" id="addnewpost" style="display: block">
+                            <form class="mt-5 ml-3"  enctype="multipart/form-data" action="addNewArticle" method="POST">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="title" class="form-control" id="title" placeholder="title" name="title">
+                                    </div>
+                                </div>
+            
+                                <div class="form-group row">
+                                    <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">post content</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="content" class="form-control" id="content" rows="10" cols="100"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">image</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="artimg" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                </div>
+            
+                                <div class="form-group row justify-content-end">
+                                    <div class="col-sm-10 ">
+                                        <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                            id="sendArticle">send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="" id="showPost" style="display: none">
+                            <!-- <button src="../user/addArticle" id="showArticleSort" class="btn btn-primary">Sort</button>
+                            <button src="../user/addArticle" id="showArticleunSort" class="btn btn-success">unSort</button><br> -->
+                            <div class="card-group" id="showpostsuser">
+            
+                            </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 85%;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        
+                                        <div class="modal-body">
+                                                <form class="mt-5 ml-3">
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="title" class="form-control" id="titlemodal" placeholder="title" name="title">
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <div class="form-group row">
+                                                            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">post content</label>
+                                                            <div class="col-sm-10">
+                                                                <textarea name="content" class="form-control" id="contentmodal" rows="5" cols="100"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">image</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" id="saveEditPost" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" id="showAllPost" style="display: none">
+                             
+                                <button src="../user/addArticle" id="showArticleSort" class="btn btn-primary">Sort</button>
+                                <button src="../user/addArticle" id="showArticleunSort" class="btn btn-success">unSort</button><br>
+                                <div class="card-group" id="showallpostsuser">
+                
+                                </div>
+                                
+            
+            
+                        </div>
+            
+                    </div> 
+        </div>
+    <!-- <div class="container">
+        <div class="row justify-content-center">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" style="height: 50px;">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">new post</a>
+                </li>
+                <li class="nav-item" style="height: 50px;">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">show post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="editpost-tab" data-toggle="tab" href="#editpost" role="tab"
+                        aria-controls="editpost" aria-selected="false">edit Post </a>
+                </li>
+
+            </ul>
+
+
+
+            <script>
+                // $(function () {
+                //     $('#myTab li:last-child a').tab('show')
+                // })
+            </script>
+
+        </div>-->
+        
+        
+    
+  
+
+
+          <!-- <div id="name">behnam</div>
+          <div id="name2">ali</div> -->
+          <script>
+            $(document).ready(function () {
+                $("#newpost").click(function(){
+                    $("#addnewpost").css('display','block')
+                    $("#showPost").css('display','none')
+                    $("#showAllPost").css('display','none')
+                })
+                $("#showpost").click(function(){
+                    $("#addnewpost").css('display','none')
+                    $("#showPost").css('display','block')
+                    $("#showAllPost").css('display','none')
+                })
+                $("#showallpost").click(function(){
+                    $("#addnewpost").css('display','none')
+                    $("#showPost").css('display','none')
+                    $("#showAllPost").css('display','block')
+                })
+            })
+          </script>
+    <% include ./partials/footer %>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+
+    <script src="/javascripts/userPanel.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

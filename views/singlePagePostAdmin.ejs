@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <style>
+      .comment {
+      width: 40%;
+      height: 100px;
+      padding: 10px;
+      background-color: #d0e2bc;
+      font: 1.4em/1.6em cursive;
+      color: #095484;
+      }
+      ::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+.thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
+.commentDesign{
+    width: 85% !important;
+    background-color: #efefe9;
+    margin-top: 13px !important;
+    margin-bottom: 13px !important;
+}
+.alert-close{
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 -1px 2px rgba(255,255,255,0.25);
+    color: rgb(209, 45, 45);
+    cursor: pointer;
+    font-size: 29px;
+    font-weight: normal;
+    height: 22px;
+    line-height: 24px;
+    position: absolute;
+    right: 11px;
+    text-align: center;
+    top: 10px;
+    transition: color 0.2s ease-in-out;
+    width: 23px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2px;
+}
+.alert-close:hover{
+    background-color: #e8e2e2;
+    font-size: 38px;
+    transition: 0.3s;
+}
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+    <%include ./partials/head %>
+</head>
+
+<body class="" style="overflow: scroll !important">
+
+    <header>
+        <% include ./partials/header %>
+    </header>
+
+    <nav style="background-color:rgb(192, 175, 175)">
+            <div class="nav-wrapper" style="    display: flex;justify-content: space-around;">
+              <ul id="nav-mobile" class="left hide-on-med-and-down" style="width: 100%; ">
+                <li style="padding-right: 26%;padding-left: 7%;"><a href="/api/panel" style="text-decoration-line: none;" id="Dashboard">Dashboard</a></li>
+                <li><a href="/api/admin/addArticleAdmin" style="text-decoration-line: none;" id="newpostAdmin">posts</a></li>
+               </ul>
+            </div>
+        </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-xl-12 mt-5 d-flex justify-content-center ">
+                <div class="card" style="width: 18rem;">
+                    <img src="../../uploads/articleImage/<%= posts[0].articleImage%>" class="card-img-top" alt="...">
+                    
+
+                    <div class="card-body">
+
+                        <div class="card-body">
+                            <h5 class="card-title"><%= posts[0].articleTitle%></h5>
+                            <p class="card-text"><%= posts[0].articleContent%></p>
+                            
+                                <p class="card-text">author : <%= user[0].userName%></p>
+                                
+                            <? posts[0].created_at  = posts[0].created_at.slice(0,10); -?>
+                            <p class="card-text">date : <%= posts[0].created_at -%></p>
+                            <p class="card-text" id="post" hidden><%= posts[0]._id -%></p>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <form style="text-align: center" id="commnet">
+        <textarea class="comment" id="commentBox" placeholder="Type your comment here." ></textarea>
+        <br>
+        <button class="btn" type="submit" id="addNewCommetn" name="submit" value="Send" style="width: 40.2%;">Send</button>
+    </form>
+
+    <div class="container commentDesign">
+        <div class="row">
+        <div class="col-sm-12" id="commentshow">
+        <h3 style="text-align: center ">User Comment </h3>
+        </div><!-- /col-sm-12 -->
+        </div><!-- /row -->
+        <%if (comment.length > 0) { %>
+            <% for(let i=0; i < comment.length; i++) { %>
+                <div class="row "  style="padding-left: 2%; "><div class="col-sm-1">
+                        <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                        </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
+                        
+                        <div class="col-sm-10">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <strong><%= comment[i].author_ID.userName%></strong> <span class="text-muted">commented 5 days ago</span>
+                        <div class="alert-close">×
+                            <div class="commentId" hidden><%=comment[i]._id%></div>
+                        </div>
+                        </div>
+                        <div class="panel-body">
+                        <%= comment[i].comment %>
+                        </div><!-- /panel-body -->
+                        </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+                        </div><!-- /row -->
+                
+            <% } %>
+
+        <% } %>
+        </div>
+        </div><!-- /container -->
+    <footer>
+        <% include ./partials/footer %>
+        <script src="/javascripts/adminPanel.js"></script>
+        <!-- <script src="/javascripts/userPanel.js"></script> -->
+    </footer>
+
+</body>
+
+</html>

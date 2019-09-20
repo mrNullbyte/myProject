@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ./partials/head %>
+</head>
+
+<body>
+
+    <div class="d-flex row bck" style="height: 94%">
+
+        <% include ./partials/header %>
+        <% include ./partials/leftPanel %>
+
+        <div class="col-12 row col-lg-9 pnlLeft justify-content-around bck p-0" style="overflow-y: scroll">
+            <div class="col-12  p-10"><i class="fas fa-tachometer-alt"></i><b>&nbsp My Dashboard</b></div>
+
+            <div class="a col-12 col-md bg-danger d-flex justify-content-between m-3 pt-4 pb-4" id="message">
+                <div class="d-flex flex-column  ">
+                    <i style="font-size: 40px" class="fas fa-comment text-white"></i>
+                    <label class="text-white pt-4">
+                        <h4>Message</h4>
+                    </label>
+                </div>
+                <div>
+                    <label class="text-white">
+                        <h4>50</h4>
+                    </label>
+                </div>
+            </div>
+            <div class="b col-12 col-md bg-primary d-flex justify-content-between m-3 pt-4 pb-4">
+                <div class="d-flex flex-column ">
+                    <i style="font-size: 40px" class="fas fa-eye text-white"></i>
+                    <label class="text-white pt-4">
+                        <h4>Message</h4>
+                    </label>
+                </div>
+                <div>
+                    <label class="text-white">
+                        <h4>50</h4>
+                    </label>
+                </div>
+            </div>
+            <div class="c col-12 col-md bg-success d-flex justify-content-between m-3 pt-4 pb-4">
+                <div class="d-flex flex-column ">
+                    <i style="font-size: 40px" class="fas fa-share-alt text-white"></i>
+                    <label class="text-white pt-4">
+                        <h4>Message</h4>
+                    </label>
+                </div>
+                <div>
+                    <label class="text-white">
+                        <h4>50</h4>
+                    </label>
+                </div>
+            </div>
+            <div class="d col-12 col-md bg-warning d-flex justify-content-between m-3 pt-4 pb-4">
+                <div class="d-flex flex-column ">
+                    <i style="font-size: 40px" class="fas fa-users text-white"></i>
+                    <label class="text-white pt-4">
+                        <h4>Message</h4>
+                    </label>
+                </div>
+                <div>
+                    <label class="text-white">
+                        <h4>50</h4>
+                    </label>
+                </div>
+            </div>
+            <div class="e d-flex row col-12 p-0">
+                <div class="p-12 col-md col-xl-12">
+                    <h3 class="mt-3">user info </h3>
+                    <table class="table table-bordered data-table" id=" ">
+                        <thead id="theadUser">
+
+                        </thead>
+                        <tbody id="tbodyUser">
+                            <tr id="trRowUsers"></tr>
+
+                        </tbody>
+                    </table>
+                    <table class="tbl">
+                        <form action="uploads" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="avatar" />
+                            <button type="submit" class="btn btn-success">upload</button>
+                        </form>
+                        <%= typeof message != 'undefined' ? message : '' %>
+                        <tbody>
+                            <tr class="tr">
+                                <td><i class="fa fa-user text-primary p-3"></i></td>
+                                <td>firstName</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-bell text-danger p-3"></i></td>
+                                <td>lastName</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-users text-warning p-3"></i></td>
+                                <td>userName</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-comment text-danger p-3"></i></td>
+                                <td>password</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-bookmark text-primary p-3"></i></td>
+                                <td>Gender</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-laptop text-danger p-3"></i></td>
+                                <td>phoneNumber</td>
+                                <td></td>
+                            </tr>
+                            <tr class="tr">
+                                <td><i class="fa fa-share-alt text-success p-3"></i></td>
+                                <td>avatar</td>
+                                <td><i>39 mins</i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="f col-12">
+                <h3>Countries</h3>
+                <table class="tbl m-border">
+                    <tbody>
+                        <tr class="table-hover">
+                            <td class="td">United States</td>
+                            <td class="td">65%</td>
+                        </tr>
+                        <tr class="table-hover">
+                            <td class="td">UK</td>
+                            <td class="td">15.7%</td>
+                        </tr>
+                        <tr class="table-hover">
+                            <td class="td">Russia</td>
+                            <td class="td">5.6%</td>
+                        </tr>
+                        <tr class="table-hover">
+                            <td class="td">Spain</td>
+                            <td class="td">2.1%</td>
+                        </tr>
+                        <tr class="table-hover">
+                            <td class="td">India</td>
+                            <td class="td">1.9%</td>
+                        </tr>
+                        <tr class="table-hover">
+                            <td class="td">France</td>
+                            <td class="td">1.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="mt-3 mb-4 btn-secondary m-btn rounded-0">More Countries
+                    <i class="fas fa-arrow-right"></i>
+
+                </button><br><br>
+
+            </div>
+
+
+            <div class="g col-12 bg-dark">
+                <div class="col-12 d-flex row  col-xl-4 flex-nowrap">
+                    <div class="col-12 text-white ml-4">
+                        <h5 class="border-bott border-success ">Demographic</h5>
+                        <p>Language</p>
+                        <p>Country</p>
+                        <p>City</p>
+                    </div>
+                    <div class="col-12 text-white ml-4">
+                        <h5 class="border-bott border-danger ">System</h5>
+                        <p>Browser</p>
+                        <p>OS</p>
+                        <p>More</p>
+                    </div>
+                    <div class="col-12 text-white ml-4">
+                        <h5 class="border-bott border-warning ">Target</h5>
+                        <p>Users</p>
+                        <p>Active</p>
+                        <p>Geo</p>
+                        <p>Interests</p>
+                    </div>
+                </div>
+            </div>
+            <% include ./partials/footer %>
+
+        </div>
+
+    </div>
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/userPanel.js"></script>
+
+</body>
+
+</html>

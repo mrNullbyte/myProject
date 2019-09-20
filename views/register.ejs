@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%title%></title>
+
+    <link rel="stylesheet" href="/stylesheets/register/bootstrap-reboot.css">
+    <link rel="stylesheet" href="/stylesheets/register/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/register/style.css">
+    <script src="https://kit.fontawesome.com/7d565aaffa.js"></script>
+    <script src="../javascripts/jquery-3.4.1.js"></script>
+
+</head>
+<style>
+input{
+    text-align: right !important;
+}
+</style>
+<body>
+        <div style="overflow: visible;    background-color: #d0cfda;    text-align: center; height: 50px;">
+                <div class="container-fluid position-relative no-side-padding" style="padding-top:12px;">
+        
+                    <a href="#" style="    margin-left: -44%;" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+        
+                    <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+        
+                    <ul style="    display: inline-block;margin-left: 38%;" class="main-menu visible-on-click" id="main-menu">
+                        <li><a href="/">Home</a></li>
+                      
+                    </ul><!-- main-menu -->
+        
+        
+                </div><!-- conatiner -->
+            </div>
+
+    <div class="container text-center col-sm-4 bg-dark mt-5">
+
+        <form class="row d-block pb-2 pl-4 pr-4 pt-4" name="registration" method="POST" action="/api/register">
+
+            <p class="text-white font-weight-bold size">ثبت نام</p>
+
+            <div class="input-group mb-4">  <!-- firstname -->
+                <input type="text" class="form-control " id="firstName" placeholder="نام "
+                    name="firstName"><div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div> <br>
+                
+            </div><!-- firstname -->
+
+            <div class="input-group mb-4">  <!-- lastName -->
+                <input type="text" class="form-control " id="lastName" placeholder=" نام خانوادگی "
+                    name="lastName"> <br>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+            </div><!-- lastName -->
+
+
+            <div class="input-group mb-4"><!-- username -->
+                <input type="text" class="form-control " id="userName" placeholder="نام کاربری"
+                    name="userName"> <br>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div><!-- username -->
+            </div>
+            <span id="Erroruser"></span>
+            <div class="input-group mb-4"><!-- password -->
+                <input type="password" class="form-control " id="password" placeholder="رمز عبور"
+                    name="password"><br>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div><!-- password -->
+            </div>
+            <span id="Errorpass"></span>
+
+            <!-- gender -->
+            <div class="form-check" style="display: inline-block">
+                <input class="form-check-input" type="radio" name="Gender" id="exampleRadios1" value="male" checked>
+                <label class="form-check-label" style="padding-left: 22px;" for="exampleRadios1">
+                 male
+                </label>
+              </div>
+              <div class="form-check" style="display: inline-block">
+                <input class="form-check-input" type="radio" name="Gender" id="exampleRadios2" value="female">
+                <label class="form-check-label" style="padding-left: 22px;" for="exampleRadios2">
+                  Female
+                </label>
+              </div>
+            <!-- gender -->
+
+            <!-- phoneNumber -->
+            <div class="input-group mb-4">  
+                <input type="text" class="form-control " id="phoneNumber" placeholder=" شماره موبایل "
+                    name="phoneNumber"> <br>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+            </div>
+            <!-- phoneNumber -->
+
+            <!-- avatar -->
+            <!-- <div class="custom-file">
+                <input type="file" class="custom-file-input" id="validatedCustomFile" required name="avatar">
+                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+              </div> -->
+            <!-- avatar -->
+
+
+            <button type="submit" class="btn btn-success btn-block" id="btn_submit_register">ثبت نام</button>
+            <div class="text-white m-2"><a href="/api/login">وارد شوید</a>حساب کاربری دارید؟ </div>
+    </div>
+
+    </form>
+
+    
+
+<script>
+// $(document).ready(function(){
+//     $ajax({
+//         url:"/api/register",
+//         dataType:'json',
+//         contentType: 'application/json',
+//         success: function (data) {
+//             alert("registred user!!!")
+//         }
+//     })
+// })
+</script>
+</body>
+
+</html

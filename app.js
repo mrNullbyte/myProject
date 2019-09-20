@@ -1,12 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
  
-var app = express();
+const app = express();
  
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,7 +46,6 @@ app.use(session({
     maxAge:600000
   }
 }));
-
 app.use(passport.initialize());
 app.use(passport.session())
 
@@ -60,8 +59,6 @@ app.use('/admin', adminRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
